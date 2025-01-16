@@ -42,4 +42,4 @@ application:
 eureka:
   client:
     service-url:
-      defaultZone: https://service-registry-dbbsg6hpfmhegqc0.southeastasia-01.azurewebsites.net/
+      defaultZone: https://dev-service-registry-b8bjdwa9c3czezcv.centralindia-01.azurewebsites.net/
