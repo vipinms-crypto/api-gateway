@@ -1,0 +1,45 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/users/**
+          filters:
+            - AuthFilter
+
+        - id: progress-service
+          uri: lb://progress-service
+          predicates:
+            - Path=/progres/**
+          filters:
+            - AuthFilter
+
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/courses/**
+          filters:
+            - AuthFilter
+
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "https://mango-mud-0c9ada900.4.azurestaticapps.net/"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+            allowedHeaders:
+              - Content-Type
+              - Authorization
+
+application:
+  name: api-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: https://service-registry-dbbsg6hpfmhegqc0.southeastasia-01.azurewebsites.net/
